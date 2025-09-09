@@ -19,7 +19,7 @@ class User(AbstractUser):
         ordering = ['username']
 
     def __str__(self):
-        return f"{self.avatar} - {self.bio}"
+        return f"{self.username}"
 
 class Category(models.Model):
     """Modèle représentant une catégorie d'activités."""

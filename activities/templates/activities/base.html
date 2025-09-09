@@ -1,15 +1,80 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/static/favicon.ico">
-  <link rel="stylesheet" href="{% static 'activities/css/styles.css' %}">
-  <title>Accueil</title>
-</head>
-<body>
-  <h1>Page Principale</h1>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="/static/favicon.ico" />
+    <link rel="stylesheet" href="{% static 'activities/css/styles.css' %}" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+    <script defer src="{% static 'activities/js/main.js' %}"></script>
+    <title>Accueil</title>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-dark border border-light rounded-3 shadow-lg pt-3"
+      >
+        <div class="container-fluid d-flex align-items-center">
+          <a class="navbar-brand d-flex align-items-center" href="/">
+            <span>AirLibre</span>
+          </a>
+
+
+          <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerD">
+            <div>
+              <a
+                href=""
+                class="btn btn-dark me-2 border border-light"
+                role="button"
+                >Déconnexion</a
+              >
+            </div>
+            <div>
+              <a
+                href=""
+                class="btn btn-dark me-2 border border-light"
+                role="button"
+                >S'autentifier</a
+              >
+            </div>
+            <div>
+              <a
+                href=""
+                class="btn btn-dark me-2 border border-light"
+                role="button"
+                >Créer un compte</a
+              >
+            </div>
+            <form class="d-flex position-relative" role="search" action="">
+              <input
+                class="form-control me-2"
+                type="search"
+                name="query"
+                placeholder="Rechercher"
+                id="txt-suggestions"
+                placeholder="Rechercher"
+                autocomplete="off"
+                aria-label="Rechercher"
+              />
+              <button class="btn btn-outline-light" type="submit">
+                Rechercher
+              </button>
+              <div
+                id="div-suggestions"
+                class="suggestions masquer position-absolute"
+              ></div>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main></main>
+    <footer></footer>
+  </body>
 </html>
