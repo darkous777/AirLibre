@@ -1,0 +1,29 @@
+{% extends "activities/base.html" %}
+
+{% block title %}Se connecter{% endblock %}
+{% block content %}
+<h2 class="mt-4 mb-4">Connexion</h2>
+
+<form method="post" class="mx-auto">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="mb-3">
+        {{ field.label_tag }}
+        {{ field }}
+        {% for error in field.errors %}
+        <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <div class="invalid-feedback d-block">{{ error }}</div>
+    {% endfor %}
+    {% endif %}
+    <div class="d-flex justify-content-around align-items-center">
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+        <a href="{% url 'signup' %}" class="btn btn-link">Créer un compte</a>
+    </div>
+</form>
+
+{% endblock %}

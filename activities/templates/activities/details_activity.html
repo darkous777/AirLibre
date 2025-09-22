@@ -1,0 +1,60 @@
+{% extends "activities/base.html" %}
+
+{% block title %}Détails de l'activité{% endblock %}
+
+{% block content %}
+
+<h2 class="mt-4 mb-4">Détail de l'activité</h2>
+<div class="mb-4 row">
+    <div class=" col-4 card h-100 shadow-sm mx-auto">
+        <div class="card-body d-flex flex-column text-start">
+            <h5 class="card-title text-center"><strong>{{ activite.title }}</strong></h5>
+            <p class="card-text"><strong>Description:</strong> {{ activite.description }}</p>
+            <p class="card-text"><strong>Catégorie:</strong> {{ activite.category.name }}</p>
+            <p class="card-text"><strong>Lieu:</strong> {{ activite.location_city }}</p>
+            <p class="card-text"><strong>Qualité de l'air:</strong>
+                {% if aqi %}
+                {{ aqi }}
+                {% else %}
+                Non disponible
+                {% endif %}
+            </p>
+            <p class="card-text"><strong>Catégorie:</strong> {{ activite.category.name }}</p>
+            <p class="card-text"><strong>Date de début:</strong> {{ activite.start_time }}</p>
+            <p class="card-text"><strong>Date de fin:</strong> {{ activite.end_time }}</p>
+            <p class="card-text"><strong>Organisateur:</strong> <a href="{ url 'profile' activitel.proposer.username }">{{ activite.proposer.username }}</a></p>
+            <div class="card-text"><strong>Participants:</strong>
+                {% if activite.attendees.all %}
+                <ul>
+                    {% for participant in activite.attendees.all %}
+                    <li>{{ participant.username }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                Aucun participant inscrit.
+                {% endif %}
+            </div>
+            {% if user.is_authenticated and user != activite.proposer %}
+            <div class="d-flex justify-content-center mt-3">
+                {% if user in activite.attendees.all %}
+                <form method="post">
+                    {% csrf_token %}
+                    <button name="unsubscribe" class="btn btn-warning">Désinscription</button>
+                </form>
+                {% else %}
+                <form method="post">
+                    {% csrf_token %}
+                    <button name="subscribe" class="btn btn-primary">Inscription</button>
+                </form>
+                {% endif %}
+            </div>
+            {% elif user == activite.proposer %}
+            <p>Vous êtes l'organisateur de cette activité.</p>
+            {% else %}
+            <p>Connectez-vous pour vous inscrire à cette activité.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

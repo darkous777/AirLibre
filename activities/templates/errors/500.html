@@ -1,0 +1,9 @@
+{% extends "activities/base.html" %}
+{% block title %}Erreur interne{% endblock %}
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Erreur 500</h1>
+    <p>Une erreur interne est survenue. Veuillez réessayer plus tard.</p>
+    <a href="{% url 'index' %}" class="btn btn-primary">Retour à l’accueil</a>
+</div>
+{% endblock %}

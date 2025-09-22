@@ -1,0 +1,31 @@
+{% extends "activities/base.html" %}
+
+{% block title %}Proposer une nouvelle activité{% endblock %}
+
+{% block content %}
+<h1 class="mt-4 mb-4">Proposer une nouvelle activité</h1>
+
+<form method="post" class="mx-auto row w-50">
+    {% csrf_token %}
+
+        <div class="col-md-6">
+            {{ form.title.label_tag }} {{ form.title }}
+            {{ form.description.label_tag }} {{ form.description }}
+            {{ form.location_city.label_tag }} {{ form.location_city }}
+            {{ form.category.label_tag }} {{ form.category }}
+        </div>
+        <div class="col-md-6">
+            {{ form.start_time.label_tag }} {{ form.start_time }}
+            {{ form.end_time.label_tag }} {{ form.end_time }}
+            {{ form.attendees.label_tag }} {{ form.attendees }}
+        </div>
+
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <div class="invalid-feedback d-block">{{ error }}</div>
+    {% endfor %}
+    {% endif %}
+    <button type="submit" class="btn btn-primary mt-5">Céer activité</button>
+</form>
+
+{% endblock %}
