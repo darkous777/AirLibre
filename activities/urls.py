@@ -7,5 +7,5 @@ urlpatterns = [
     path("activity/<int:activity_id>/", views.details_activity, name="details_activity"),
     path("activity/new/", views.new_activity, name="new_activity"),
     path("profile/", views.profile, name="profile"),
-    path("profile/<str:username>/edit/", views.edit_profile, name="edit_profile"),
+    path("profile/edit/", views.edit_profile, name="edit_profile"),
 ]

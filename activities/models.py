@@ -5,14 +5,14 @@ from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.forms import ValidationError
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
-
-# Create your models here.
+import os
+import uuid
 
 
 class User(AbstractUser):
     """Modèle représentant un utilisateur de l'application."""
 
-    avatar = models.ImageField(upload_to="avatars/", blank=True)
+    avatar = models.ImageField(upload_to='avatar/', blank=True)
     bio = models.TextField(max_length=500, blank=True)
 
     class Meta:

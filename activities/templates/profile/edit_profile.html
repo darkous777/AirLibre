@@ -1,0 +1,21 @@
+{% extends "activities/base.html" %}
+
+{% block title %}Modifier le profil{% endblock %}
+
+{% block content %}
+
+<h1 class="mt-4 mb-4">Modifier le profil</h1>
+
+<form method="post" class="mx-auto" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="">
+        {{ form.as_p }}
+    </div>
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <div class="invalid-feedback d-block">{{ error }}</div>
+    {% endfor %}
+    {% endif %}
+    <button type="submit" class="btn btn-primary mt-5">Enregistrer les modifications</button>
+
+{% endblock %}

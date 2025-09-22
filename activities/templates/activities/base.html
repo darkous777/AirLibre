@@ -33,8 +33,17 @@
               activité</a>
           </div>
           <div>
-            <a href="{% url 'profile' %}" class="btn btn-dark me-2 border border-light" role="button">{{ user.username
-              }}</a>
+            <a href="{% url 'profile' %}?username={{ user.username }}" class="btn btn-dark p-2 me-2 border border-light"
+              role="button">
+              {% if user.avatar %}
+              <img src="{{ user.avatar.url }}" alt="Avatar de {{ user.username }}" width="50" height="50"
+                class="img-thumbnail p-0">
+              {% else %}
+              <img src="/media/images/user.png" alt="Avatar par défaut" width="50" height="50"
+                class="img-thumbnail m-0 p-0">
+              {% endif %}
+              {{ user.username }}
+            </a>
           </div>
           <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
@@ -54,6 +63,15 @@
     </nav>
   </header>
   <main class="container text-center justify-content-center ">
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <p{% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>
+        {{ message }}</p>
+
+        {% endfor %}
+    </div>
+    {% endif %}
     {% block content %}
     {% endblock %}
   </main>

@@ -1,0 +1,78 @@
+{% extends "activities/base.html" %}
+{% block title %}Profil de {{ user.username }}{% endblock %}
+
+{% block content %}
+
+<h1 class="mt-4 mb-4">Profil de {{ profile_user.username }}</h1>
+<div class="mb-5 row">
+    <div class=" col-md-4 card h-100 shadow-sm mx-auto">
+        <div class="card-body d-flex flex-column text-start">
+            <div class="d-flex justify-content-between">
+                <p><strong>Avatar:</strong></p>
+                {% if profile_user.avatar %}
+                <img src="{{ profile_user.avatar.url }}" alt="Avatar de {{ profile_user.username }}" width="150" height="150" class="img-thumbnail">
+                {% else %}
+                <img src="/media/images/user.png" alt="Avatar par défaut" width="150" height="150" class="img-thumbnail">
+                {% endif %}
+            </div>
+
+            <div>
+                <p><strong>Nom</strong> : {{ profile_user.first_name }}</p>
+            </div>
+            <div>
+                <p><strong>Prénom</strong> : {{ profile_user.last_name }}</p>
+            </div>
+            <div>
+                <p><strong>Email</strong> : {{ profile_user.email }}</p>
+            </div>
+            <div>
+                <p><strong>Bio</strong> : {{ profile_user.bio }}</p>
+            </div>
+            {% if user == profile_user %}
+            <a href="{% url 'edit_profile' %}" class="btn btn-primary mt-auto">Modifier le profil</a>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+<h2 class="mb-4">Activités proposées par {{ profile_user.username }}</h2>
+<div class="mb-5 row">
+    {% if liste_proposer_activites %}
+    {% for activite in liste_proposer_activites %}
+    <div class=" col-md-4 card h-100 shadow-sm mx-auto">
+        <div class="card-body d-flex flex-column text-center ">
+            <h5 class="card-title"><strong>{{ activite.title }}</strong></h5>
+            <p class="card-text"><strong>Lieu:</strong> {{ activite.location_city }}</p>
+            <p class="card-text"><strong>Catégorie:</strong> {{ activite.category.name }}</p>
+            <p class="card-text"><strong>Date:</strong> {{ activite.start_time }}</p>
+            <p class="card-text"><strong>Organisateur:</strong> {{ activite.proposer.username }}</p>
+            <a href="{% url 'details_activity' activite.id %}" class="btn btn-primary mt-auto">Voir les détails</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Aucune activité proposée.</p>
+    {% endif %}
+</div>
+<h2 class="mb-4">Activités auxquelles {{ profile_user.username }} participe</h2>
+<div class="mb-5 row">
+    {% if liste_participer_activites %}
+    {% for activite in liste_participer_activites %}
+    <div class=" col-md-4 card h-100 shadow-sm mx-auto">
+
+        <div class="card-body d-flex flex-column text-center">
+            <h5 class="card-title"><strong>{{ activite.title }}</strong></h5>
+            <p class="card-text"><strong>Lieu:</strong> {{ activite.location_city }}</p>
+            <p class="card-text"><strong>Catégorie:</strong> {{ activite.category.name }}</p>
+            <p class="card-text"><strong>Date:</strong> {{ activite.start_time }}</p>
+            <p class="card-text"><strong>Organisateur:</strong> {{ activite.proposer.username }}</p>
+            <a href="{% url 'details_activity' activite.id %}" class="btn btn-primary mt-auto">Voir les détails</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Aucune activité à laquelle participer.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

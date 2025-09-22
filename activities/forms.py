@@ -3,8 +3,21 @@ from django import forms
 from django.utils import timezone
 from .models import User, Activity, Category
 
+class ModifyProfileForm(forms.ModelForm):
+    """Formulaire pour la modification du profil utilisateur."""
+    class Meta:
+        model = User
+        fields = ['avatar', 'first_name', 'last_name', 'email', 'bio']
+        widgets = {
+            'avatar': forms.FileInput(attrs={'class': 'form-control w-100', 'accept': 'image/*'}),
+            'nom': forms.TextInput(attrs={'class': 'form-control'}),
+            'prenom': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
 
 class NewActivityForm(forms.ModelForm):
+    """Formulaire pour la création d'une nouvelle activité."""
     class Meta:
         model = Activity
         fields = [

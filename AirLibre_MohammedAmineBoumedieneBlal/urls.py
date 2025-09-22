@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
-# import debug_toolbar.toolbar import debug_toolbar_urls
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", include("activities.urls")),
@@ -26,8 +26,4 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
 ]
 if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
-
-handler404 = 'activities.views.page_not_found'
-handler500 = 'activities.views.server_error'
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -26,9 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ce9$xu9_rzedozj%2rp70w1ae=fgjkd(&31!(npz%g*sqgh5$-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'activities.User'
 
@@ -42,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'activities',
-    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -53,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'AirLibre_MohammedAmineBoumedieneBlal.urls'
@@ -122,8 +117,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -136,18 +135,14 @@ LOGIN_REDIRECT_URL = '/'
 LANGUAGE_CODE = 'fr'
 USE_I18N = True
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+WAQI_API_TOKEN = "f390af2888cbf59f4e0b4bc4383090db2c1d598a"
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
-DEBUG = env('DEBUG')
-WAQI_API_TOKEN = env('WAQI_API_TOKEN')
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL  = '/media/'
