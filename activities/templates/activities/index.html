@@ -7,14 +7,17 @@
 
 <div class="row align-items-center mb-4">
     <div class="col">
-        <a href="?filtre=toutes{% if categorie_id %}&category={{ categorie_id }}{% endif %}"
-            class="btn btn-outline-primary {% if filtre == 'toutes' %}active{% endif %}">Toutes les activités</a>
+        <a href="?filtre=toutes{% if category_selected %}&category={{ category_selected.id }}{% endif %}"
+            class="btn btn-dark text-light btn-outline-primary {% if filtre == 'toutes' %}border-light{% endif %}">Toutes
+            les activités</a>
         {% if user.is_authenticated %}
-        <a href="?filtre=mes_proposees{% if categorie_id %}&category={{ categorie_id }}{% endif %}"
-            class="btn btn-outline-primary {% if filtre == 'mes_proposees' %}active{% endif %}">Mes activités
+        <a href="?filtre=mes_proposees{% if category_selected %}&category={{ category_selected.id }}{% endif %}"
+            class="btn btn-dark text-light btn-outline-primary {% if filtre == 'mes_proposees' %}border-light{% endif %}">Mes
+            activités
             proposées</a>
-        <a href="?filtre=mes_inscriptions{% if categorie_id %}&category={{ categorie_id }}{% endif %}"
-            class="btn btn-outline-primary {% if filtre == 'mes_inscriptions' %}active{% endif %}">Mes inscriptions</a>
+        <a href="?filtre=mes_inscriptions{% if category_selected %}&category={{ category_selected.id }}{% endif %}"
+            class="btn btn-dark text-light btn-outline-primary {% if filtre == 'mes_inscriptions' %}border-light{% endif %}">Mes
+            inscriptions</a>
         {% endif %}
     </div>
     <div class="col d-flex justify-content-end">
@@ -23,13 +26,16 @@
             <select class="form-select form-select-sm bg-dark text-light" name="category" onchange="this.form.submit()">
                 <option value="">Toutes les catégories</option>
                 {% for category in categories %}
-                <option value="{{ category.id }}" {% if category.id|stringformat:"s" == categorie_id %}selected{% endif %}>{{ category.name }}</option>
-                {% endfor %}
+                <option value="{{ category.id }}" {% if category_selected and category.id == category_selected.id %}
+                    selected {% endif %}>
+                    {{ category.name }}
+                </option> {% endfor %}
             </select>
         </form>
     </div>
 </div>
 <div class="row">
+
     {% for activite in activites %}
     <div class="col-md-4 mb-4">
         <div class="card h-100 shadow-sm">

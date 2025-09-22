@@ -34,13 +34,16 @@ def index(request):
     activites = pagination.get_page(nb_page)
 
     categories = Category.objects.all()
+    category_selected = None
+    if categorie_id:
+        category_selected = Category.objects.filter(id=categorie_id).first()
 
     if request.user.is_authenticated:
         user = request.user
     else:
         user = None
 
-    return render(request, 'activities/index.html', {'activites': activites, 'user': user, 'filtre': filtre, 'categories': categories, 'categorie_id': categorie_id})
+    return render(request, 'activities/index.html', {'activites': activites, 'user': user, 'filtre': filtre, 'categories': categories, 'category_selected': category_selected})
 
 def signup(request):
     """Vue pour la page d'inscription."""

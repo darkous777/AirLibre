@@ -5,9 +5,6 @@ from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.forms import ValidationError
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
-import os
-import uuid
-
 
 class User(AbstractUser):
     """Modèle représentant un utilisateur de l'application."""
