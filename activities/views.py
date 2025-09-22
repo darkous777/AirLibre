@@ -60,13 +60,16 @@ def new_activity(request):
     """Vue pour la page de création d'une activité."""
 
     if request.method == 'POST':
-        form = NewActivityForm(request.POST, proposer=request.user)
+        form = NewActivityForm(request.POST)
         if form.is_valid():
+            activite = form.save(commit=False)
+            activite.proposer = request.user
+            activite.save()
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Activité créée avec succès!')
             return redirect('index')
     else:
-        form = NewActivityForm(proposer=request.user)
+        form = NewActivityForm()
 
     return render(request, 'activities/new_activity.html', {'form': form})
 

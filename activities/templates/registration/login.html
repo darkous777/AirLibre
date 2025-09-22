@@ -4,7 +4,7 @@
 {% block content %}
 <h2 class="mt-4 mb-4">Connexion</h2>
 
-<form method="post" class="mx-auto">
+<form method="post" class="mx-auto" novalidate>
     {% csrf_token %}
     {% for field in form %}
     <div class="mb-3">

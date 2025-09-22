@@ -114,6 +114,10 @@ class Activity(models.Model):
     def clean(self):
         """Validation personnalisée pour s'assurer que la date de début est dans le futur
         et que la date de fin est après la date de début."""
+
+        if self.start_time is None or self.end_time is None:
+            raise ValidationError("Les dates de début et de fin doivent être renseignées.")
+
         if self.start_time <= timezone.now():
             raise ValidationError("La date de début doit être dans le futur.")
 
