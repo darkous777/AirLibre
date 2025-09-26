@@ -3,8 +3,6 @@
 *.pot
 *.pyc
 __pycache__/
-db.sqlite3
-media/
 staticfiles/
 .env
 
@@ -14,6 +12,3 @@ staticfiles/
 # OS
 .DS_Store
 Thumbs.db
-
-**/styles.css
-**/styles.css.map
