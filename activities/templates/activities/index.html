@@ -27,7 +27,7 @@
                 onchange="this.form.submit()">
                 <option value="">Toutes les catégories</option>
                 {% for category in categories %}
-                <option value="{{ category.id }}" {% if category_selected and category.id==category_selected.id %}
+                <option value="{{ category.id }}" {% if category_selected and category.id == category_selected.id %}
                     selected {% endif %}>
                     {{ category.name }}
                 </option> {% endfor %}

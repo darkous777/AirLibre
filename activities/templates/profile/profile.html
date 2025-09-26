@@ -5,7 +5,7 @@
 
 <h1 class="mt-4 mb-4">Profil de {{ profile_user.username }}</h1>
 <div class="mb-5 row">
-    <div class=" col-md-4 card h-100 shadow-sm mx-auto">
+    <div class=" col-md-4 card h-100 shadow-sm mx-auto bg-light text-dark border border-light">
         <div class="card-body d-flex flex-column text-start">
             <div class="d-flex justify-content-between">
                 <p><strong>Avatar:</strong></p>
@@ -39,7 +39,7 @@
 <div class="mb-5 row">
     {% if liste_proposer_activites %}
     {% for activite in liste_proposer_activites %}
-    <div class=" col-md-4 card h-100 shadow-sm mx-auto">
+    <div class=" col-md-4 card h-100 shadow-sm mx-auto bg-light text-dark border border-light">
         <div class="card-body d-flex flex-column text-center ">
             <h5 class="card-title"><strong>{{ activite.title }}</strong></h5>
             <p class="card-text"><strong>Lieu:</strong> {{ activite.location_city }}</p>
@@ -58,7 +58,7 @@
 <div class="mb-5 row">
     {% if liste_participer_activites %}
     {% for activite in liste_participer_activites %}
-    <div class=" col-md-4 card h-100 shadow-sm mx-auto">
+    <div class=" col-md-4 card h-100 shadow-sm mx-auto bg-light text-dark border border-light">
 
         <div class="card-body d-flex flex-column text-center">
             <h5 class="card-title"><strong>{{ activite.title }}</strong></h5>
