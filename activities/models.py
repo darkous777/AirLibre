@@ -25,7 +25,7 @@ class User(AbstractUser):
 
 class Category(models.Model):
     """Modèle représentant une catégorie d'activités."""
-
+    objects = models.Manager()
     name = models.CharField(
         verbose_name="Nom de la catégorie",
         unique=True,
@@ -57,7 +57,7 @@ class Category(models.Model):
 
 class Activity(models.Model):
     """Modèle représentant une activité proposée par un utilisateur."""
-
+    objects = models.Manager()
     title = models.CharField(
         verbose_name="Titre",
         null=False,

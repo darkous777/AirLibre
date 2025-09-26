@@ -6,7 +6,7 @@
 
 <h2 class="mt-4 mb-4">Détail de l'activité</h2>
 <div class="mb-4 row">
-    <div class=" col-md-6 card h-100 shadow-sm mx-auto">
+    <div class=" col-md-6 card h-100 shadow-sm mx-auto p-0 border border-black border-2 rounded-3 bg-light text-dark">
         <div class="card-body d-flex flex-column text-start">
             <h5 class="card-title text-center"><strong>{{ activite.title }}</strong></h5>
             <p class="card-text"><strong>Description:</strong> {{ activite.description }}</p>
@@ -23,7 +23,7 @@
             <p class="card-text"><strong>Date de début:</strong> {{ activite.start_time }}</p>
             <p class="card-text"><strong>Date de fin:</strong> {{ activite.end_time }}</p>
             <p class="card-text"><strong>Organisateur:</strong> <a
-                    href="{% url 'profile' %}?username={{ activite.proposer.username }}">{{ activite.proposer.username }}</a></p>
+                    href="{% url 'profile' %}?username={{ activite.proposer.username }}" class="text-dark">{{ activite.proposer.username }}</a></p>
             <div class="card-text"><strong>Participants:</strong>
                 {% if activite.attendees.all %}
                 <ul>
@@ -40,13 +40,17 @@
                 {% if user in activite.attendees.all %}
                 <form method="post">
                     {% csrf_token %}
-                    <button name="desinscrire" class="btn btn-warning">Désinscription</button>
+                    <button name="desinscrire"  class="p-0 mb-4"><a
+                                class="btn btn-danger text-dark border border-light">Désinscription</a></button>
                 </form>
                 {% else %}
-                <form method="post">
-                    {% csrf_token %}
-                    <button name="inscrire" class="btn btn-primary">Inscription</button>
-                </form>
+                <div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button name="inscrire" class="p-0 mb-4"><a
+                                class="btn btn-success text-dark border border-light">Inscription</a></button>
+                    </form>
+                </div>
                 {% endif %}
             </div>
             {% elif user == activite.proposer %}

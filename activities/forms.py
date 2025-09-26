@@ -1,22 +1,22 @@
 """Forms pour la gestion des activités et des utilisateurs."""
 
 from django import forms
-from django.utils import timezone
-from .models import User, Activity, Category
+from .models import User, Activity
 
 
 class ModifyProfileForm(forms.ModelForm):
     """Formulaire pour la modification du profil utilisateur."""
 
     class Meta:
+        """Meta data pour la modification d'un profile existant."""
         model = User
         fields = ["avatar", "first_name", "last_name", "email", "bio"]
         widgets = {
             "avatar": forms.FileInput(
                 attrs={"class": "form-control w-100", "accept": "image/*"}
             ),
-            "nom": forms.TextInput(attrs={"class": "form-control"}),
-            "prenom": forms.TextInput(attrs={"class": "form-control"}),
+            "first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "last_name": forms.TextInput(attrs={"class": "form-control"}),
             "email": forms.EmailInput(attrs={"class": "form-control"}),
             "bio": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
         }

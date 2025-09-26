@@ -1,122 +1,122 @@
 @use "bootstrap"
 
 
-body
-    @extend .container
+// body
+//     @extend .container
 
-header
-    @extend .pt-5, .pb-3
+// header
+//     @extend .pt-5, .pb-3
 
-    h1
-        @extend .display-5
+//     h1
+//         @extend .display-5
 
-    p
-        @extend .lead
+//     p
+//         @extend .lead
 
-nav, main, footer
-    @extend .pb-5
+// nav, main, footer
+//     @extend .pb-5
 
-.form-contact
-    width: 100%
+// .form-contact
+//     width: 100%
 
-    .zone-message
-        width: 100%
-        min-width: 400px
-        max-width: 100%
-
-
-form
-    @extend .col-sm-8, .col-md-6, .col-lg-4
-
-    >div
-        @extend .py-2
-        >div
-            @extend .invalid-feedback
-
-    label
-        @extend .form-label
-
-    input
-        @extend .form-control
-
-    button[type="submit"]
-        @extend .btn, .btn-primary
-
-    button:not(button[type="submit"])
-        @extend .btn, .btn-secondary
+//     .zone-message
+//         width: 100%
+//         min-width: 400px
+//         max-width: 100%
 
 
-#div-suggestions
-    width: 100%
-    position: absolute
-    top: 100%
-    left: 0
-    z-index: 1000
-    background-color: #444444
-    border: 1px solid #ccc
-    border-radius: 0.25rem
-    font-family: Arial, sans-serif
+// form
+//     @extend .col-sm-8, .col-md-6, .col-lg-4
+
+//     >div
+//         @extend .py-2
+//         >div
+//             @extend .invalid-feedback
+
+//     label
+//         @extend .form-label
+
+//     input
+//         @extend .form-control
+
+//     button[type="submit"]
+//         @extend .btn, .btn-primary
+
+//     button:not(button[type="submit"])
+//         @extend .btn, .btn-secondary
 
 
-
-#div-suggestions a
-    display: block
-    padding: 0.5rem
-    border-bottom: 1px solid #eee
-    color: #ffffff
-    text-decoration: none
-
-
-#div-suggestions a:last-child
-    border-bottom: none
-
-
-.masquer
-    display: none
+// #div-suggestions
+//     width: 100%
+//     position: absolute
+//     top: 100%
+//     left: 0
+//     z-index: 1000
+//     background-color: #444444
+//     border: 1px solid #ccc
+//     border-radius: 0.25rem
+//     font-family: Arial, sans-serif
 
 
 
+// #div-suggestions a
+//     display: block
+//     padding: 0.5rem
+//     border-bottom: 1px solid #eee
+//     color: #ffffff
+//     text-decoration: none
 
 
-#div-suggestions
-    width: 100%
-    position: absolute
-    top: 100%
-    left: 0
-    z-index: 1000
-    background-color: #444444
-    border: 1px solid #ccc
-    border-radius: 0.25rem
-    font-family: Arial, sans-serif
+// #div-suggestions a:last-child
+//     border-bottom: none
 
 
-
-#div-suggestions a
-    display: block
-    padding: 0.5rem
-    border-bottom: 1px solid #eee
-    color: #ffffff
-    text-decoration: none
-
-
-#div-suggestions a:last-child
-    border-bottom: none
-
-
-.masquer
-    display: none
+// .masquer
+//     display: none
 
 
 
 
 
-#suggestions
-    .suggestions
-        @extend .list-group
-        width: 300px
-        position: absolute
+// #div-suggestions
+//     width: 100%
+//     position: absolute
+//     top: 100%
+//     left: 0
+//     z-index: 1000
+//     background-color: #444444
+//     border: 1px solid #ccc
+//     border-radius: 0.25rem
+//     font-family: Arial, sans-serif
 
-        a
-            @extend .list-group-item , .list-group-item-action
-    .masquer
-        display: none
+
+
+// #div-suggestions a
+//     display: block
+//     padding: 0.5rem
+//     border-bottom: 1px solid #eee
+//     color: #ffffff
+//     text-decoration: none
+
+
+// #div-suggestions a:last-child
+//     border-bottom: none
+
+
+// .masquer
+//     display: none
+
+
+
+
+
+// #suggestions
+//     .suggestions
+//         @extend .list-group
+//         width: 300px
+//         position: absolute
+
+//         a
+//             @extend .list-group-item , .list-group-item-action
+//     .masquer
+//         display: none
